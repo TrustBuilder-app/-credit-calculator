@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Late Payment Credit Damage Calculator</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f6f8fb;
+  padding: 20px;
+}
+
+.container {
+  max-width: 420px;
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #111;
+}
+
+p {
+  font-size: 14px;
+  color: #444;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 12px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #c9302c;
+}
+
+.result {
+  display: none;
+  margin-top: 20px;
+  background: #fdecea;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.cta {
+  margin-top: 15px;
+  background: #fff3cd;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Late Payment Impact Calculator</h2>
+  <p>See how much late payments may be damaging your credit score.</p>
+
+  <label>Number of Late Payments</label>
+  <input type="number" id="lates" placeholder="e.g. 4">
+
+  <label>Months Since Most Recent Late</label>
+  <input type="number" id="months" placeholder="e.g. 6">
+
+  <button onclick="calculate()">Check My Damage</button>
+
+  <div class="result" id="result">
+    <h3>Your Estimated Impact</h3>
+    <p id="output"></p>
+
+    <div class="cta">
+      <strong>⚠ Important:</strong><br>
+      Late payments can stay on your report for up to 7 years.
+      Credit repair services may be able to remove or dispute them.
+      <br><br>
+      👉 <strong>[INSERT YOUR CPA AFFILIATE LINK HERE]</strong>
+    </div>
+  </div>
+</div>
+
+<script>
+function calculate() {
+  var lates = parseInt(document.getElementById("lates").value);
+  var months = parseInt(document.getElementById("months").value);
+
+  if (isNaN(lates) || isNaN(months)) {
+    alert("Please enter valid numbers.");
+    return;
+  }
+
+  var damage = lates * 25;
+
+  if (months < 3) damage += 20;
+  else if (months < 6) damage += 10;
+
+  if (damage > 150) damage = 150;
+
+  document.getElementById("output").innerHTML =
+    "Your late payments may be costing you up to <strong>" +
+    damage + " credit score points</strong>.";
+
+  document.getElementById("result").style.display = "block";
+}
+</script>
+
+</body>
+</html>
