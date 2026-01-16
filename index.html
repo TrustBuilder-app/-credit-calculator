@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Score Improvement Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f7f9fc;
+    padding: 20px;
+  }
+  .container {
+    max-width: 420px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  h2 {
+    text-align: center;
+    color: #1a1a1a;
+  }
+  p {
+    font-size: 14px;
+    color: #444;
+  }
+  label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  button {
+    width: 100%;
+    background: #0077ff;
+    color: #fff;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #005fd1;
+  }
+  .result {
+    margin-top: 20px;
+    background: #f1f5ff;
+    padding: 15px;
+    border-radius: 5px;
+    display: none;
+  }
+  .cta {
+    margin-top: 15px;
+    background: #fff4e5;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  .email-box {
+    margin-top: 15px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Credit Score Improvement Calculator</h2>
+  <p>Estimate how many credit score points you could gain in the next 30–60 days.</p>
+
+  <label>Current Credit Score</label>
+  <input type="number" id="score" placeholder="e.g. 580">
+
+  <label>Credit Card Utilization (%)</label>
+  <input type="number" id="utilization" placeholder="e.g. 75">
+
+  <label>Number of Late Payments</label>
+  <input type="number" id="lates" placeholder="e.g. 3">
+
+  <button onclick="calculate()">Calculate My Potential</button>
+
+  <div class="result" id="result">
+    <h3>Your Estimated Improvement</h3>
+    <p id="points"></p>
+
+    <div class="cta">
+      <strong>⚠ Important:</strong><br>
+      Most people can't fix these issues alone.  
+      A professional credit repair service can help remove late payments and optimize utilization faster.
+      <br><br>
+      👉 <strong>[INSERT YOUR CPA AFFILIATE LINK HERE]</strong>
+    </div>
+
+    <div class="email-box">
+      <p><strong>Want a personalized credit repair plan?</strong></p>
+      <p>Enter your email to get next steps:</p>
+      <input type="email" placeholder="Enter your email">
+      <button style="background:#28a745;">Save My Results</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function calculate() {
+  var score = parseInt(document.getElementById("score").value);
+  var utilization = parseInt(document.getElementById("utilization").value);
+  var lates = parseInt(document.getElementById("lates").value);
+
+  if (isNaN(score) || isNaN(utilization) || isNaN(lates)) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  var improvement = 0;
+
+  if (utilization > 30) improvement += 20;
+  if (utilization > 50) improvement += 20;
+  improvement += lates * 10;
+
+  if (improvement > 120) improvement = 120;
+
+  document.getElementById("points").innerHTML =
+    "You could potentially increase your score by <strong>" + improvement +
+    " points</strong> within 30–60 days.";
+
+  document.getElementById("result").style.display = "block";
+}
+</script>
+
+</body>
+</html>
