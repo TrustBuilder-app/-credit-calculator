@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Late Payment Severity Simulator</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#f5f7fa;
+  padding:20px;
+}
+.container {
+  max-width:480px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+h1 { text-align:center; }
+label { font-weight:bold; margin-top:15px; display:block; }
+input, select {
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+button {
+  width:100%;
+  margin-top:20px;
+  padding:12px;
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+}
+.result {
+  margin-top:20px;
+  padding:15px;
+  background:#fff7ed;
+  border-left:6px solid #f97316;
+}
+.note {
+  font-size:12px;
+  color:#666;
+  text-align:center;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>Late Payment Severity Simulator</h1>
+
+<p>Late payments impact your credit score differently depending on how late they are and your overall credit profile.</p>
+
+<label>Days Late</label>
+<select id="days">
+  <option value="30">30 Days</option>
+  <option value="60">60 Days</option>
+  <option value="90">90+ Days</option>
+</select>
+
+<label>Credit Profile</label>
+<select id="profile">
+  <option value="thin">Thin / New Credit</option>
+  <option value="average">Average Credit</option>
+  <option value="strong">Strong / Established Credit</option>
+</select>
+
+<button onclick="calculate()">Simulate Impact</button>
+
+<div id="output"></div>
+
+<div class="note">Educational tool only. No personal data stored.</div>
+</div>
+
+<script>
+function calculate() {
+  const days = document.getElementById("days").value;
+  const profile = document.getElementById("profile").value;
+
+  let impact = "";
+  let recovery = "";
+
+  if (days === "30") {
+    impact = profile === "strong" ? "Moderate drop (40–60 points)" : "Severe drop (60–100 points)";
+    recovery = "3–6 months with perfect payments.";
+  } 
+  if (days === "60") {
+    impact = "Severe drop (70–120 points)";
+    recovery = "6–12 months depending on profile.";
+  } 
+  if (days === "90") {
+    impact = "Major damage (100–160+ points)";
+    recovery = "12–24 months without removal.";
+  }
+
+  document.getElementById("output").innerHTML = `
+    <div class="result">
+      <strong>Estimated Impact:</strong> ${impact}<br><br>
+      <strong>Recovery Timeline:</strong> ${recovery}<br><br>
+      <em>Tip:</em> Removal matters more than aging for late payments.
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
