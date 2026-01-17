@@ -1,139 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Credit Utilization Impact Calculator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fa;
-      padding: 20px;
-    }
-    .container {
-      max-width: 520px;
-      margin: auto;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-      font-size: 22px;
-      text-align: center;
-    }
-    p {
-      font-size: 14px;
-      color: #333;
-    }
-    label {
-      font-weight: bold;
-      margin-top: 10px;
-      display: block;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      font-size: 16px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #2563eb;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .result {
-      margin-top: 20px;
-      padding: 15px;
-      background: #f0fdf4;
-      border-left: 5px solid #22c55e;
-      display: none;
-    }
-    .warning {
-      background: #fff7ed;
-      border-left: 5px solid #f97316;
-    }
-    .bad {
-      background: #fef2f2;
-      border-left: 5px solid #ef4444;
-    }
-    footer {
-      font-size: 12px;
-      color: #666;
-      margin-top: 20px;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Credit Repair Tools</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#f4f6f8;
+  margin:0;
+  padding:20px;
+}
+.container {
+  max-width:720px;
+  margin:auto;
+}
+h1 {
+  text-align:center;
+  margin-bottom:10px;
+}
+p.subtitle {
+  text-align:center;
+  color:#555;
+  margin-bottom:30px;
+}
+.tool {
+  background:#ffffff;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  margin-bottom:20px;
+}
+.tool h2 {
+  margin-top:0;
+}
+.tool p {
+  color:#444;
+}
+.tool a {
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 16px;
+  background:#2563eb;
+  color:#fff;
+  text-decoration:none;
+  border-radius:6px;
+  font-size:14px;
+}
+.tool a:hover {
+  background:#1d4ed8;
+}
+.footer {
+  text-align:center;
+  font-size:12px;
+  color:#666;
+  margin-top:30px;
+}
+</style>
 </head>
+
 <body>
-
 <div class="container">
-  <h1>Credit Utilization Impact Calculator</h1>
-  <p>
-    Credit utilization is the percentage of your available credit that you're using.
-    It is a short-term scoring factor that can significantly affect your credit score.
-  </p>
 
-  <label>Total Credit Limit ($)</label>
-  <input type="number" id="limit" placeholder="Example: 5000">
+<h1>Free Credit Repair Tools</h1>
+<p class="subtitle">
+Educational calculators to help you understand and improve your credit.
+No signup. No tracking. Mobile-friendly.
+</p>
 
-  <label>Total Balance Owed ($)</label>
-  <input type="number" id="balance" placeholder="Example: 1200">
-
-  <button onclick="calculate()">Calculate Impact</button>
-
-  <div id="result" class="result"></div>
-
-  <footer>
-    Educational tool only. No personal data stored.
-  </footer>
+<div class="tool">
+  <h2>📊 Credit Utilization Calculator</h2>
+  <p>See how your credit card balances are impacting your score.</p>
+  <a href="utilization.html">Open Calculator →</a>
 </div>
 
-<script>
-function calculate() {
-  const limit = parseFloat(document.getElementById("limit").value);
-  const balance = parseFloat(document.getElementById("balance").value);
-  const result = document.getElementById("result");
+<div class="tool">
+  <h2>⏰ Late Payment Impact Estimator</h2>
+  <p>Estimate how late payments may be affecting your credit score.</p>
+  <a href="late-payments.html">Open Calculator →</a>
+</div>
 
-  if (!limit || !balance || limit <= 0) {
-    result.style.display = "block";
-    result.className = "result bad";
-    result.innerHTML = "Please enter valid numbers.";
-    return;
-  }
+<div class="tool">
+  <h2>💳 Credit Card Paydown Simulator</h2>
+  <p>Find out how much paying down balances could help your score.</p>
+  <a href="paydown.html">Open Calculator →</a>
+</div>
 
-  const utilization = ((balance / limit) * 100).toFixed(1);
-  let message = "";
-  let className = "result";
+<div class="tool">
+  <h2>🚨 Credit Score Damage Analyzer</h2>
+  <p>Identify what’s hurting your credit score the most right now.</p>
+  <a href="score-damage-analyzer.html">Analyze My Credit →</a>
+</div>
 
-  if (utilization <= 9) {
-    message = `Excellent utilization (${utilization}%). Typically optimal for scoring.`;
-  } else if (utilization <= 29) {
-    message = `Good utilization (${utilization}%). Scores are usually stable here.`;
-    className += " warning";
-  } else if (utilization <= 49) {
-    message = `Fair utilization (${utilization}%). May suppress your score.`;
-    className += " warning";
-  } else {
-    message = `High utilization (${utilization}%). Likely hurting your score.`;
-    className += " bad";
-  }
+<div class="footer">
+Educational use only. Results vary by credit profile.
+</div>
 
-  result.style.display = "block";
-  result.className = className;
-  result.innerHTML = `
-    <strong>Your Utilization:</strong> ${utilization}%<br><br>
-    ${message}<br><br>
-    <em>Note:</em> Utilization resets monthly once balances are paid down.
-  `;
-}
-</script>
-
+</div>
 </body>
 </html>
