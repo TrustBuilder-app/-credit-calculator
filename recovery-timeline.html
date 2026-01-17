@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Score Recovery Timeline</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#f5f7fa;
+  padding:20px;
+}
+.container {
+  max-width:500px;
+  margin:auto;
+  background:#ffffff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+h1 { text-align:center; }
+label {
+  font-weight:bold;
+  margin-top:15px;
+  display:block;
+}
+select {
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+button {
+  width:100%;
+  margin-top:20px;
+  padding:12px;
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+}
+.result {
+  margin-top:20px;
+  padding:15px;
+  background:#ecfeff;
+  border-left:6px solid #06b6d4;
+}
+.note {
+  font-size:12px;
+  color:#666;
+  text-align:center;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>Credit Score Recovery Timeline</h1>
+
+<p>Select a credit event to estimate how long recovery typically takes with perfect behavior.</p>
+
+<label>Credit Event</label>
+<select id="event">
+  <option value="late30">30-Day Late Payment</option>
+  <option value="late60">60-Day Late Payment</option>
+  <option value="late90">90-Day Late Payment</option>
+  <option value="highutil">High Utilization</option>
+  <option value="collection">Collection Account</option>
+  <option value="chargeoff">Charge-Off</option>
+</select>
+
+<button onclick="calculate()">Show Timeline</button>
+
+<div id="output"></div>
+
+<div class="note">Educational tool only. Estimates vary by credit profile.</div>
+</div>
+
+<script>
+function calculate() {
+  const event = document.getElementById("event").value;
+  let timeline = "";
+  let tip = "";
+
+  switch(event) {
+    case "late30":
+      timeline = "3–6 months for noticeable recovery.";
+      tip = "Goodwill removals can speed this up.";
+      break;
+    case "late60":
+      timeline = "6–12 months with perfect payments.";
+      tip = "Removal matters more than aging.";
+      break;
+    case "late90":
+      timeline = "12–24 months without removal.";
+      tip = "Disputes or settlements help recovery.";
+      break;
+    case "highutil":
+      timeline = "1–2 billing cycles once balances are paid down.";
+      tip = "Utilization has no memory.";
+      break;
+    case "collection":
+      timeline = "Immediate improvement if deleted; otherwise 12–24 months.";
+      tip = "Pay-for-delete is key.";
+      break;
+    case "chargeoff":
+      timeline = "24+ months unless removed.";
+      tip = "Settled charge-offs still hurt.";
+      break;
+  }
+
+  document.getElementById("output").innerHTML = `
+    <div class="result">
+      <strong>Estimated Recovery Time:</strong> ${timeline}<br><br>
+      <strong>Key Insight:</strong> ${tip}
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
