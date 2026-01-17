@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Dispute Eligibility Checker</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#f5f7fa;
+  padding:20px;
+}
+.container {
+  max-width:520px;
+  margin:auto;
+  background:#ffffff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+h1 { text-align:center; }
+
+label {
+  display:block;
+  margin-top:15px;
+  font-weight:bold;
+}
+select {
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+button {
+  width:100%;
+  margin-top:20px;
+  padding:12px;
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+}
+.result {
+  margin-top:20px;
+  padding:15px;
+  background:#ecfeff;
+  border-left:6px solid #06b6d4;
+}
+.warning {
+  background:#fff7ed;
+  border-left:6px solid #f97316;
+}
+.note {
+  font-size:12px;
+  color:#666;
+  text-align:center;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>Dispute Eligibility Checker</h1>
+
+<p>Answer honestly to see what items may be disputable.</p>
+
+<label>Account Type</label>
+<select id="type">
+  <option value="late">Late Payment</option>
+  <option value="collection">Collection</option>
+  <option value="chargeoff">Charge-Off</option>
+  <option value="inquiry">Hard Inquiry</option>
+</select>
+
+<label>Is the information inaccurate?</label>
+<select id="inaccurate">
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
+
+<label>Is the account currently open?</label>
+<select id="open">
+  <option value="no">No</option>
+  <option value="yes">Yes</option>
+</select>
+
+<label>Is the balance $0?</label>
+<select id="balance">
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
+
+<button onclick="check()">Check Eligibility</button>
+
+<div id="output"></div>
+
+<div class="note">
+Educational tool only. Not legal advice.
+</div>
+</div>
+
+<script>
+function check() {
+  const inaccurate = document.getElementById("inaccurate").value;
+  const open = document.getElementById("open").value;
+  const balance = document.getElementById("balance").value;
+
+  let result = "";
+  let className = "result";
+
+  if (inaccurate === "yes") {
+    result = "This item is likely disputable. Inaccurate reporting violates the FCRA.";
+  } else if (open === "yes" && balance === "no") {
+    result = "Low success. Accurate, active accounts are difficult to dispute.";
+    className += " warning";
+  } else if (balance === "yes") {
+    result = "Possible dispute path. Paid or closed accounts have more leverage.";
+  } else {
+    result = "Dispute success is unlikely without inaccuracies.";
+    className += " warning";
+  }
+
+  document.getElementById("output").innerHTML = `
+    <div class="${className}">
+      <strong>Result:</strong><br>${result}
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
