@@ -1,193 +1,137 @@
-  display: block;
-}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Credit Repair Tools</title>
-
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f6f8fb;
-  padding: 20px;
-}
-
-.container {
-  max-width: 500px;
-  margin: auto;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-h2 {
-  text-align: center;
-  color: #111;
-}
-
-p {
-  font-size: 14px;
-  color: #444;
-  text-align: center;
-}
-
-.tool {
-  margin-top: 15px;
-  padding: 15px;
-  background: #eef3ff;
-  border-radius: 8px;
-}
-
-.tool a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #0077ff;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Credit Utilization Impact Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      padding: 20px;
+    }
+    .container {
+      max-width: 520px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 22px;
+      text-align: center;
+    }
+    p {
+      font-size: 14px;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f0fdf4;
+      border-left: 5px solid #22c55e;
+      display: none;
+    }
+    .warning {
+      background: #fff7ed;
+      border-left: 5px solid #f97316;
+    }
+    .bad {
+      background: #fef2f2;
+      border-left: 5px solid #ef4444;
+    }
+    footer {
+      font-size: 12px;
+      color: #666;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
-
 <body>
 
 <div class="container">
-  <h2>Free Credit Repair Tools</h2>
-  <p>Use these free tools to understand and improve your credit score.</p>
-
-  <div class="tool">
-    👉 <a href="credit-calculator.html">Credit Score Improvement Calculator</a><br>
-    Estimate how many points you could gain.
-  </div>
-
-  <div class="tool">
-    👉 <a href="utilization.html">Credit Utilization Calculator</a><br>
-    See how balances affect your score.
-  </div>
-
-  <div class="tool">
-    👉 <a href="late-payments.html">Late Payment Damage Calculator</a><br>
-    Find out how much late payments hurt.
-  </div>
-
-  <p style="margin-top:20px;font-size:13px;">
-    ⚠ Results are estimates. For serious credit issues, professional help may be required.
+  <h1>Credit Utilization Impact Calculator</h1>
+  <p>
+    Credit utilization is the percentage of your available credit that you're using.
+    It is a short-term scoring factor that can significantly affect your credit score.
   </p>
-</div>
 
-</body>
-</html>
+  <label>Total Credit Limit ($)</label>
+  <input type="number" id="limit" placeholder="Example: 5000">
 
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
+  <label>Total Balance Owed ($)</label>
+  <input type="number" id="balance" placeholder="Example: 1200">
 
-button {
-  width: 100%;
-  background: #0077ff;
-  color: #fff;
-  padding: 12px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
+  <button onclick="calculate()">Calculate Impact</button>
 
-button:hover {
-  background: #005fd1;
-}
+  <div id="result" class="result"></div>
 
-.result {
-  margin-top: 20px;
-  background: #f1f5ff;
-  padding: 15px;
-  border-radius: 5px;
-  display: none;
-}
-
-.cta {
-  margin-top: 15px;
-  background: #fff4e5;
-  padding: 15px;
-  border-radius: 5px;
-  font-size: 14px;
-  border-left: 4px solid #ff9800;
-}
-
-.email-box {
-  margin-top: 15px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-  <h2>Credit Score Improvement Calculator</h2>
-  <p>Estimate how many credit score points you could potentially gain in the next 30–60 days.</p>
-
-  <label>Current Credit Score</label>
-  <input type="number" id="score" placeholder="e.g. 580">
-
-  <label>Credit Card Utilization (%)</label>
-  <input type="number" id="utilization" placeholder="e.g. 75">
-
-  <label>Number of Late Payments</label>
-  <input type="number" id="lates" placeholder="e.g. 3">
-
-  <button onclick="calculate()">Calculate My Potential</button>
-
-  <div class="result" id="result">
-    <h3>Your Estimated Improvement</h3>
-    <p id="points"></p>
-
-    <div class="cta">
-      <strong>⚠ Important:</strong><br><br>
-      High credit card utilization and late payments are two of the biggest factors holding scores down.<br><br>
-      <strong>Next step:</strong><br>
-      Get a <strong>free credit repair evaluation</strong> to see what can realistically be fixed and how fast.
-    </div>
-
-    <div class="email-box">
-      <p><strong>Want a personalized credit improvement plan?</strong></p>
-      <p>Save your results and get next steps:</p>
-
-      <!-- Email form placeholder (connect later) -->
-      <input type="email" placeholder="Enter your email">
-      <button style="background:#28a745;">Save My Results</button>
-    </div>
-  </div>
+  <footer>
+    Educational tool only. No personal data stored.
+  </footer>
 </div>
 
 <script>
 function calculate() {
-  var score = parseInt(document.getElementById("score").value);
-  var utilization = parseInt(document.getElementById("utilization").value);
-  var lates = parseInt(document.getElementById("lates").value);
+  const limit = parseFloat(document.getElementById("limit").value);
+  const balance = parseFloat(document.getElementById("balance").value);
+  const result = document.getElementById("result");
 
-  if (isNaN(score) || isNaN(utilization) || isNaN(lates)) {
-    alert("Please fill in all fields.");
+  if (!limit || !balance || limit <= 0) {
+    result.style.display = "block";
+    result.className = "result bad";
+    result.innerHTML = "Please enter valid numbers.";
     return;
   }
 
-  var improvement = 0;
+  const utilization = ((balance / limit) * 100).toFixed(1);
+  let message = "";
+  let className = "result";
 
-  if (utilization > 30) improvement += 20;
-  if (utilization > 50) improvement += 20;
-  improvement += lates * 10;
+  if (utilization <= 9) {
+    message = `Excellent utilization (${utilization}%). Typically optimal for scoring.`;
+  } else if (utilization <= 29) {
+    message = `Good utilization (${utilization}%). Scores are usually stable here.`;
+    className += " warning";
+  } else if (utilization <= 49) {
+    message = `Fair utilization (${utilization}%). May suppress your score.`;
+    className += " warning";
+  } else {
+    message = `High utilization (${utilization}%). Likely hurting your score.`;
+    className += " bad";
+  }
 
-  if (improvement > 120) improvement = 120;
-
-  document.getElementById("points").innerHTML =
-    "You could potentially increase your score by <strong>" +
-    improvement +
-    " points</strong> within 30–60 days.";
-
-  document.getElementById("result").style.display = "block";
+  result.style.display = "block";
+  result.className = className;
+  result.innerHTML = `
+    <strong>Your Utilization:</strong> ${utilization}%<br><br>
+    ${message}<br><br>
+    <em>Note:</em> Utilization resets monthly once balances are paid down.
+  `;
 }
 </script>
 
